@@ -1,0 +1,56 @@
+.mountain-array {
+    overflow-y: scroll;
+}
+
+.mountain-array-wrapper {
+    white-space: nowrap;
+}
+
+.hill-container {
+    display: inline-block;
+}
+
+.hill-container:not(:first-child) {
+    margin-left: -4px;
+}
+
+.hill-wrapper {
+    width: 100%;
+    display: inline-block;
+}
+
+.hill, .water {
+    width: 100%;
+}
+
+.water {
+    background-color: aqua;
+}
+
+.hill {
+    background-color: gray;
+}
+
+.hill-height {
+    text-align: center;
+}
+
+.hill-buttons {
+    text-align: center;
+}
+
+.hill-delete {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

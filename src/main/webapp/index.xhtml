@@ -9,22 +9,44 @@
         <title>CRX Markets</title>
     </h:head>
     <h:body style="padding-top: 5px;">
+        <h:outputStylesheet name="/css/style.css" />
         <b:container>
             <b:navBar brand="CRX Markets" brandHref="#"/>
             <h2>Rainy hills problem solving</h2>
             <b:form>
-                <ui:repeat value="#{rainyHillsBean.hills}" var="hill" varStatus="hillStatus">
-                    #{hill}
-                    <h:commandLink value="Delete" action="${rainyHillsBean.delete(hillStatus.index)}"/>
-                </ui:repeat>
+                <div class="mountain-array">
+                    <div class="mountain-array-wrapper">
+                        <ui:repeat value="#{rainyHillsBean.hills}" var="hill" varStatus="hillStatus">
+                            <div class="hill-container">
+                                <div class="hill-wrapper">
+                                    <div class="water" style="height: #{0 * 15}px;"/>
+                                    <div class="hill" style="height: #{hill * 15}px;"/>
+                                </div>
+                                <div class="hill-buttons">
+                                    <h:outputLabel value="#{hill}" class="hill-height"/>
+                                    <br/>
+                                    <h:commandLink class="hill-delete" value="Delete" action="#{rainyHillsBean.delete(hillStatus.index)}"/>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </div>
             </b:form>
 
             <b:form>
-                <b:inputText value="#{rainyHillsBean.hillHeight}">
-                    <f:facet name="append">
-                        <b:commandButton action="#{rainyHillsBean.add}" look="primary" value="Add hill" icon-align="right"/>
-                    </f:facet>
-                </b:inputText>
+                <b:formGroup>
+                    <h:outputLabel value="Water volume"/>
+                    <b:inputText value="#{rainyHillsBean.waterVolume}" readonly="true"/>
+                </b:formGroup>
+
+                <b:formGroup>
+                    <h:outputLabel value="Hill height"/>
+                    <b:inputText value="#{rainyHillsBean.hillHeight}">
+                        <f:facet name="append">
+                            <b:commandButton action="#{rainyHillsBean.add}" look="primary" value="Add hill" icon-align="right"/>
+                        </f:facet>
+                    </b:inputText>
+                </b:formGroup>
             </b:form>
         </b:container>
     </h:body>
