@@ -6,6 +6,7 @@
       xmlns:ui = "http://java.sun.com/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.crxmarkets.com/en/wp-content/themes/wp-CRX/assets/images/crx.ico" />
         <title>CRX Markets</title>
     </h:head>
     <h:body style="padding-top: 5px;">
@@ -19,7 +20,6 @@
                         <ui:repeat value="#{rainyHillsBean.hills}" var="hill" varStatus="hillStatus">
                             <div class="hill-container">
                                 <div class="hill-wrapper">
-                                    <div class="water" style="height: #{0 * 15}px;"/>
                                     <div class="hill" style="height: #{hill * 15}px;"/>
                                 </div>
                                 <div class="hill-buttons">
@@ -34,14 +34,15 @@
             </b:form>
 
             <b:form>
+                <b:messages/>
+
                 <b:formGroup>
-                    <h:outputLabel value="Water volume"/>
-                    <b:inputText value="#{rainyHillsBean.waterVolume}" readonly="true"/>
+                    <b:inputText label="Water volume" value="#{rainyHillsBean.waterVolume}" readonly="true"/>
                 </b:formGroup>
 
                 <b:formGroup>
-                    <h:outputLabel value="Hill height"/>
-                    <b:inputText value="#{rainyHillsBean.hillHeight}">
+                    <b:inputText id="hillHeight" label="Hill height" value="#{rainyHillsBean.hillHeight}" required="true" autocomplete="false">
+                        <f:validateLongRange minimum="0" />
                         <f:facet name="append">
                             <b:commandButton action="#{rainyHillsBean.add}" look="primary" value="Add hill" icon-align="right"/>
                         </f:facet>
