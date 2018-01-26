@@ -43,12 +43,17 @@ public class RainyHillsBean implements Serializable {
 	}
 
 	public void add() {
-		hills.add(hillHeight);
-		hillHeight = null;
-		waterVolume = rainyHillsService.calculate(hills);
+		if (hillHeight != null) {
+			hills.add(hillHeight);
+			hillHeight = null;
+			waterVolume = rainyHillsService.calculate(hills);
+		}
 	}
 
 	public void delete(int index) {
-		hills.remove(index);
+		if (index >= 0 && index < hills.size()) {
+			hills.remove(index);
+			waterVolume = rainyHillsService.calculate(hills);
+		}
 	}
 }
