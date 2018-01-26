@@ -96,27 +96,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <version>1.1.10.Final</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.spock</groupId>
-            <artifactId>arquillian-spock-container</artifactId>
-            <version>1.0.0.Beta3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>1.1-groovy-2.4</version>
+            <version>0.7-groovy-2.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>1.7.9</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>3.2.6</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

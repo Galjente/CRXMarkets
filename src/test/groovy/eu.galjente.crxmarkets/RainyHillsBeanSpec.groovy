@@ -3,12 +3,13 @@ package eu.galjente.crxmarkets
 import spock.lang.Specification
 
 
-class RainyHillsBeanSpecification extends Specification {
+class RainyHillsBeanSpec extends Specification {
 
+  private final static Integer NEGATIVE_HILL_HEIGHT = -5
   private final static Integer FIRST_HILL_HEIGHT = 5
   private final static Integer MIDDLE_HILL_HEIGHT = 2
   private final static Integer LAST_HILL_HEIGHT = 3
-  private final static Integer[] HILL_ARRAY = [FIRST_HILL_HEIGHT, MIDDLE_HILL_HEIGHT, LAST_HILL_HEIGHT]
+  private final static List<Integer> HILL_ARRAY = [FIRST_HILL_HEIGHT, MIDDLE_HILL_HEIGHT, LAST_HILL_HEIGHT]
 
   def rainyHillsService = Mock(RainyHillsService)
 
@@ -20,6 +21,22 @@ class RainyHillsBeanSpecification extends Specification {
       bean.hillHeight == null
       bean.waterVolume == 0
       bean.hills == []
+  }
+
+  def "Add negative hill height"() {
+    given:
+      RainyHillsBean bean = new RainyHillsBean()
+      bean.rainyHillsService = rainyHillsService
+
+    when:
+      bean.hillHeight = NEGATIVE_HILL_HEIGHT
+      bean.add()
+
+    then:
+      !bean.hillHeight
+      bean.hills == []
+      bean.hills.size() == 0
+      0 * rainyHillsService.calculate(bean.hills)
   }
 
   def "Add one hill"() {
@@ -90,7 +107,7 @@ class RainyHillsBeanSpecification extends Specification {
     given:
       RainyHillsBean bean = new RainyHillsBean()
       bean.rainyHillsService = rainyHillsService
-      bean.hills = HILL_ARRAY
+      bean.hills = new ArrayList(HILL_ARRAY)
 
     when:
       bean.delete(0)
@@ -106,7 +123,7 @@ class RainyHillsBeanSpecification extends Specification {
     given:
       RainyHillsBean bean = new RainyHillsBean()
       bean.rainyHillsService = rainyHillsService
-      bean.hills = HILL_ARRAY
+      bean.hills = new ArrayList(HILL_ARRAY)
 
     when:
       bean.delete(2)
@@ -122,7 +139,7 @@ class RainyHillsBeanSpecification extends Specification {
     given:
       RainyHillsBean bean = new RainyHillsBean()
       bean.rainyHillsService = rainyHillsService
-      bean.hills = HILL_ARRAY
+      bean.hills = new ArrayList(HILL_ARRAY)
 
     when:
       bean.delete(1)
@@ -138,7 +155,7 @@ class RainyHillsBeanSpecification extends Specification {
     given:
     RainyHillsBean bean = new RainyHillsBean()
       bean.rainyHillsService = rainyHillsService
-      bean.hills = HILL_ARRAY
+      bean.hills = new ArrayList(HILL_ARRAY)
 
     when:
       bean.delete(3)
