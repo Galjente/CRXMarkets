@@ -5,11 +5,11 @@ This README would normally document whatever steps are necessary to get your app
 ### CRXMarkets home work ###
 
 * Quick summary
-* Version 1.1
+* Version 1.0.0
 
 * Install Git
-* Install Java
-* Install Maven
+* Install Java 8
+* Install Maven 3
 * run app from IDE or from command line
 
 ### Clone ###
@@ -22,8 +22,10 @@ cd CRXMarkets
 ### Build an executable JAR
 You can run the application from the command line using:
 ```
-maven tomee:run
+maven clean install tomee:run
 ```
+When application startet you can open link http://localhost:8080/CRXMarkets
+
 Or you can build a WAR file that contains all the necessary dependencies, classes, and resources with:
 ```
 maven clean install
